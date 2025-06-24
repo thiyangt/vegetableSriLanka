@@ -1,3 +1,13 @@
-## code to prepare `DATASET` dataset goes here
+## packages
+library(here)
 
-usethis::use_data(DATASET, overwrite = TRUE)
+
+## Read data
+
+
+
+
+
+## save dataset
+## Save the dataset as vegetables.srilanka
+usethis::use_data(vegetables.srilanka, overwrite = TRUE)
