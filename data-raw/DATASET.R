@@ -1,24 +1,26 @@
-## packages
-library(readxl)
+## Packages
+library(readr)
 library(tidyr)
 library(dplyr)
+library(here)
 
 ## Read data
-data <- read_excel("C:/Users/thisu/Desktop/Final project/4. Final data/combined_data_new_cleaned.xlsx")
+data <- read_csv(here("data-raw", "data.csv"))
 
+## Rename columns
 colnames(data) <- c("Date", "Item",
                     "Wholesale_Pettah", "Wholesale_Dambulla",
                     "Retail_Pettah", "Retail_Dambulla")
 
+## Remove the first row (if needed)
 data <- data[-1, ]
 
-
-data <- data %>%
+## Transform data to long format
+vegetables.srilanka <- data |>
   pivot_longer(cols = -c(Date, Item),
                names_to = c("Type", "Market"),
                names_sep = "_",
                values_to = "Price")
 
-## save dataset
-## Save the dataset as vegetables.srilanka
+## Save as internal or external dataset in R package
 usethis::use_data(vegetables.srilanka, overwrite = TRUE)
