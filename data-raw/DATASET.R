@@ -12,15 +12,15 @@ colnames(data) <- c("Date", "Item",
                     "Wholesale_Pettah", "Wholesale_Dambulla",
                     "Retail_Pettah", "Retail_Dambulla")
 
-## Remove the first row (if needed)
+## Remove the first row
 data <- data[-1, ]
 
-## Transform data to long format
+## Transform data
 vegetables.srilanka <- data |>
   pivot_longer(cols = -c(Date, Item),
                names_to = c("Type", "Market"),
                names_sep = "_",
                values_to = "Price")
 
-## Save as internal or external dataset in R package
+## Save
 usethis::use_data(vegetables.srilanka, overwrite = TRUE)
