@@ -1,17 +1,15 @@
-Package: rpkgtemplate
+Package: vegetablesSriLanka
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Daily Vegetable Prices of Sri Lanka
 Version: 0.1.0
 Authors@R: c(
-    person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
-    )
+  c(
+   person("Thiyanga", "Talagala", email = "ttalagala@sjp.ac.lk", role = c("aut", "cre"), comment=c(ORCID = "0000-0002-0656-9789")),
+   person("Thisuri", "", role = c("aut"), comment = c(ORCID = "")),
+    person("Priyanga", "Talagala", role = c("aut"), comment = c(ORCID = "0000-0003-2870-7449")))
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
+Description: Retail and Wholesale Vegetable Prices for Two Major Economic Centers in Sri Lanka—Dambulla and Pettah
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends: 
