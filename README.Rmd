@@ -32,5 +32,6 @@ pak::pak("thiyangt/vegetableSriLanka")
 ```{r example}
 library(vegetablesSriLanka)
 data("vegetables.srilanka")
+head(vegetables.srilanka)
 ```
 

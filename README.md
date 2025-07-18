@@ -6,7 +6,7 @@
 ## Installation
 
 You can install the development version of vegetablesSriLanka from
-[GitHub](https://github.com/) with:
+GitHub with:
 
 ``` r
 # install.packages("pak")
