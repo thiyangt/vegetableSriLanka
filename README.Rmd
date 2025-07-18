@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-You can install the development version of vegetablesSriLanka from [GitHub](https://github.com/) with:
+You can install the development version of vegetablesSriLanka from GitHub with:
 
 ``` r
 # install.packages("pak")

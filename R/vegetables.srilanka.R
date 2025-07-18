@@ -4,8 +4,9 @@
 #' \describe{
 #'   \item{Date}{Date}
 #'   \item{Item}{Vegetable name}
-#'   \item{Type}{Week}
-#'   \item{Reported.cases}{Number of reported dengue cases}
+#'   \item{Type}{Wholesale or Retail price}
+#'   \item{Market}{Pettah or Dambulla market}
+#'   \item{Price}{Price in LKR}
 #'   }
 #' @source Accessed from Daily Reports - Central Bank of Sri Lanka
 #' @examples
