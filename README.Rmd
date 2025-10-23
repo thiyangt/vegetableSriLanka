@@ -13,9 +13,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-# vegetablesSriLanka
+# vegetablesSriLanka <img src="logo/vegetableSriLanka_hex.png" align="right" height="200"/>
 
-<img src="vegetableSriLanka.png" align="right" height="200"/>
 
 ## Installation
 

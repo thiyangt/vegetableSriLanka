@@ -1,9 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# vegetablesSriLanka
-
-<img src="vegetableSriLanka.png" align="right" height="200"/>
+# vegetablesSriLanka <img src="logo/vegetableSriLanka_hex.png" align="right" height="200"/>
 
 ## Installation
 
