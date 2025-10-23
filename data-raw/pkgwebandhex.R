@@ -7,6 +7,7 @@ usethis::use_pkgdown()
 pkgdown::build_site()
 
 
+
 ## Hex sticker
 library(hexSticker)
 pic <- here::here("data-raw", "veg.png")
@@ -23,3 +24,9 @@ sticker(
   filename = "vegetableSriLanka_hex.png",
   dpi = 300
 )
+
+
+## Package build path
+devtools::build(path = "C:/Users/DELL/Documents")
+devtools::build(path = ".")
+
