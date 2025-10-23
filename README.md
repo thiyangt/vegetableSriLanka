@@ -5,7 +5,7 @@
 
 ## Installation
 
-You can install the development version of `vegetablesSriLanka` from
+You can install the development version of vegetablesSriLanka from
 GitHub with:
 
 ``` r
@@ -13,7 +13,7 @@ GitHub with:
 pak::pak("thiyangt/vegetableSriLanka")
 ```
 
-## Example
+## Load data
 
 ``` r
 library(vegetablesSriLanka)

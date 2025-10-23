@@ -25,7 +25,7 @@ You can install the development version of vegetablesSriLanka from GitHub with:
 pak::pak("thiyangt/vegetableSriLanka")
 ```
 
-## Example
+## Load data
 
 
 

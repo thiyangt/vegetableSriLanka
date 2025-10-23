@@ -21,6 +21,11 @@ vegetables.srilanka <- data |>
                names_to = c("Type", "Market"),
                names_sep = "_",
                values_to = "Price")
+vegetables.srilanka$Date <- as.Date(vegetables.srilanka$Date, format ="%d/%m/%Y")
 
+library(tsibble)
+vegetables.srilanka <- vegetables.srilanka |>
+  as_tsibble(key=c(Item, Type, Market), ind=Date)
+vegetables.srilanka
 ## Save
 usethis::use_data(vegetables.srilanka, overwrite = TRUE)
