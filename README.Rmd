@@ -35,3 +35,11 @@ data("vegetables.srilanka")
 head(vegetables.srilanka)
 ```
 
+
+```{r}
+library(tidyverse)
+vegetables.srilanka |>
+  filter(Item == "Pumpkin") |>
+  ggplot(aes(x=Date, y=Price)) + 
+  geom_line()
+```
