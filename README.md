@@ -3,6 +3,8 @@
 
 # vegetablesSriLanka
 
+<img src="vegetableSriLanka.png" align="right" height="200"/>
+
 ## Installation
 
 You can install the development version of vegetablesSriLanka from
@@ -10,7 +12,7 @@ GitHub with:
 
 ``` r
 # install.packages("pak")
-pak::pak("thiyangt/vegetableSriLanka")
+pak::pak("thiyangt/vegetablesSriLanka")
 ```
 
 ## Load data
