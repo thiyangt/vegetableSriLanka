@@ -22,6 +22,7 @@ vegetables.srilanka <- data |>
                names_sep = "_",
                values_to = "Price")
 vegetables.srilanka$Date <- as.Date(vegetables.srilanka$Date, format ="%d/%m/%Y")
+vegetables.srilanka$Price <- as.numeric(vegetables.srilanka$Price)
 
 library(tsibble)
 vegetables.srilanka <- vegetables.srilanka |>

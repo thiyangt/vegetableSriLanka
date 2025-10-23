@@ -34,12 +34,66 @@ library(vegetablesSriLanka)
 data("vegetables.srilanka")
 head(vegetables.srilanka)
 ```
+## Data Quality Analysis
 
+```{r, warning=FALSE, message=FALSE}
+library(visdat)
+library(naniar)
+library(tidyverse)
+```
+
+### Information about the class of the data input
+
+```{r, warning=FALSE, message=FALSE}
+vis_dat(vegetables.srilanka)
+```
+
+### Amount of missings in each columns
+
+```{r, warning=FALSE, message=FALSE}
+vis_miss(vegetables.srilanka)
+```
+
+### Visualise item-wise missing percentage
 
 ```{r}
-library(tidyverse)
+vs1 <- vegetables.srilanka |>
+  filter(!is.na(Item)) 
+gg_miss_fct(vs1, Item)
+```
+
+```{r}
+vs <- vegetables.srilanka |>
+  filter(!is.na(Item)) |>
+  select(Item, Price)
+# Calculate item-wise missing percentage
+missing_summary <- vs |>
+  group_by(Item) |>
+  summarise(
+    missing_pct = mean(!complete.cases(across())) * 100
+  )
+
+ggplot(missing_summary, aes(x = reorder(Item, -missing_pct), y = missing_pct)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(
+    title = "Item-wise Missing Data Percentage",
+    x = "Item",
+    y = "Missing Percentage (%)"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+
+
+## Example
+
+```{r, message=FALSE, warning=FALSE}
 vegetables.srilanka |>
   filter(Item == "Pumpkin") |>
+  filter(Type == "Retail") |>
+  filter(Market == "Dambulla") |>
   ggplot(aes(x=Date, y=Price)) + 
   geom_line()
 ```

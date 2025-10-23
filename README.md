@@ -19,31 +19,88 @@ pak::pak("thiyangt/vegetableSriLanka")
 library(vegetablesSriLanka)
 data("vegetables.srilanka")
 head(vegetables.srilanka)
-#>         Date    Item      Type   Market Price
-#> 1 2016-08-01 Pumpkin Wholesale   Pettah    70
-#> 2 2016-08-01 Pumpkin Wholesale Dambulla    45
-#> 3 2016-08-01 Pumpkin    Retail   Pettah    90
-#> 4 2016-08-01 Pumpkin    Retail Dambulla    70
-#> 5 2016-08-01 Brinjal Wholesale   Pettah    60
-#> 6 2016-08-01 Brinjal Wholesale Dambulla    45
+#>         Date  Item   Type   Market Price
+#> 1 2016-08-01 Beans Retail Dambulla   165
+#> 2 2016-08-02 Beans Retail Dambulla   190
+#> 3 2016-08-03 Beans Retail Dambulla   190
+#> 4 2016-08-04 Beans Retail Dambulla   190
+#> 5 2016-08-05 Beans Retail Dambulla   190
+#> 6 2016-08-08 Beans Retail Dambulla   190
 ```
 
+## Data Quality Analysis
+
 ``` r
+library(visdat)
+library(naniar)
 library(tidyverse)
-#> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-#> ✔ dplyr     1.1.4     ✔ readr     2.1.5
-#> ✔ forcats   1.0.0     ✔ stringr   1.5.1
-#> ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
-#> ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-#> ✔ purrr     1.1.0     
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+```
+
+### Information about the class of the data input
+
+``` r
+vis_dat(vegetables.srilanka)
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+### Amount of missings in each columns
+
+``` r
+vis_miss(vegetables.srilanka)
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+### Visualise item-wise missing percentage
+
+``` r
+vs1 <- vegetables.srilanka |>
+  filter(!is.na(Item)) 
+gg_miss_fct(vs1, Item)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+``` r
+vs <- vegetables.srilanka |>
+  filter(!is.na(Item)) |>
+  select(Item, Price)
+# Calculate item-wise missing percentage
+missing_summary <- vs |>
+  group_by(Item) |>
+  summarise(
+    missing_pct = mean(!complete.cases(across())) * 100
+  )
+#> Warning: There was 1 warning in `summarise()`.
+#> ℹ In argument: `missing_pct = mean(!complete.cases(across())) * 100`.
+#> ℹ In group 1: `Item = "Beans"`.
+#> Caused by warning:
+#> ! Using `across()` without supplying `.cols` was deprecated in dplyr 1.1.0.
+#> ℹ Please supply `.cols` instead.
+
+ggplot(missing_summary, aes(x = reorder(Item, -missing_pct), y = missing_pct)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(
+    title = "Item-wise Missing Data Percentage",
+    x = "Item",
+    y = "Missing Percentage (%)"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+## Example
+
+``` r
 vegetables.srilanka |>
   filter(Item == "Pumpkin") |>
+  filter(Type == "Retail") |>
+  filter(Market == "Dambulla") |>
   ggplot(aes(x=Date, y=Price)) + 
   geom_line()
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
