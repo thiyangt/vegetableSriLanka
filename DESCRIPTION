@@ -8,7 +8,7 @@ Authors@R: c(
    person("Thisuri", "Jayarathne", role = c("aut"), comment = c(ORCID = "0009-0004-3011-4364")),
     person("Priyanga Dilini", "Talagala", role = c("aut"), comment = c(ORCID = "0000-0003-2870-7449")))
   )
-Description: Retail and Wholesale Vegetable Prices for Two Major Economic Centers in Sri Lanka—Dambulla and Pettah
+Description: This package provides retail and wholesale vegetable price data for two major economic centers in Sri Lanka: Dambulla and Pettah. It includes tools for analyzing, visualizing, and comparing vegetable prices across markets.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
